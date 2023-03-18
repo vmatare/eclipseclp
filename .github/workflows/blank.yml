@@ -35,9 +35,13 @@ jobs:
           mkdir .ssh
           echo "${{ secrets.PRIVKEY }}" > .ssh/id_rsa
           ls -la .ssh/id_rsa
+
           git remote set-url origin git@github.com:vmatare/eclipseclp.git
+
+          git config --local core.sshCommand "ssh -i -vv ~/eclipseclp.rsa"
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+
           git add eclipse_basic-${VERSION}.tgz
           git commit -m "Add eclipse_basic-${VERSION}"
           git push
