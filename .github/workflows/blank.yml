@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      privkey:
+      PRIVKEY:
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -33,7 +33,8 @@ jobs:
       - name: Commit changes
         run: |
           mkdir .ssh
-          echo "${{ secrets.privkey }}" > .ssh/id_rsa
+          echo "${{ secrets.PRIVKEY }}" > .ssh/id_rsa
+          ls -la .ssh/id_rsa
           git remote set-url origin git@github.com:vmatare/eclipseclp.git
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
