@@ -6,6 +6,10 @@ name: CI
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      privkey:
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,9 +30,9 @@ jobs:
           sudo apt install wget
           wget https://eclipseclp.org/Distribution/Builds/${VERSION}/x86_64_linux/eclipse_basic.tgz \
                -O eclipse_basic-${VERSION}.tgz
-        
       - name: Commit changes
         run: |
+          echo "${{ secrets.privkey }}" > .ssh/id_rsa
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add eclipse_basic-${VERSION}.tgz
