@@ -23,7 +23,7 @@ jobs:
 
       - name: Install deps
         run: |
-          apt install wget
+          sudo apt install wget
           wget https://eclipseclp.org/Distribution/Builds/${VERSION}/x86_64_linux/eclipse_basic.tgz \
                -O eclipse_basic-${VERSION}.tgz
         
