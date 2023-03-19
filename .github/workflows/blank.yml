@@ -33,10 +33,8 @@ jobs:
       - name: Commit changes
         run: |
           mkdir .ssh
+          chmod -R 600 .ssh
           echo "${{ secrets.PRIVKEY }}" > ${PWD}/.ssh/id_rsa
-          ls -la ${PWD}/.ssh/id_rsa
-          chmod 600 .ssh/id_rsa
-          echo test > eclipse_basic-${VERSION}.tgz
 
           git remote set-url origin git@github.com:vmatare/eclipseclp.git
 
