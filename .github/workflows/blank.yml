@@ -18,7 +18,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      VERSION: 6.1_229
+      VERSION: 7.0_63
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
