@@ -33,11 +33,10 @@ jobs:
       - name: Commit changes
         run: |
           mkdir .ssh
-          chmod -R 600 .ssh
           echo "${{ secrets.PRIVKEY }}" > ${PWD}/.ssh/id_rsa
+          chmod -R 700 .ssh
 
           git remote set-url origin git@github.com:vmatare/eclipseclp.git
-
           git config --local core.sshCommand "ssh -vv -i ${PWD}/.ssh/id_rsa"
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
